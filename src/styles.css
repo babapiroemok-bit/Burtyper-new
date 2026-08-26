@@ -1,0 +1,282 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "Vault" dark theme.
+ * Gold/green value tones + electric violet-blue secondary accent.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-emerald: var(--emerald);
+  --color-violet: var(--violet);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.16 0.021 165);
+  --foreground: oklch(0.975 0.008 120);
+
+  --surface: oklch(0.213 0.024 165);
+  --surface-2: oklch(0.256 0.028 165);
+
+  --card: oklch(0.213 0.024 165);
+  --card-foreground: oklch(0.975 0.008 120);
+  --popover: oklch(0.213 0.024 165);
+  --popover-foreground: oklch(0.975 0.008 120);
+
+  --primary: oklch(0.83 0.166 90);
+  --primary-foreground: oklch(0.19 0.04 90);
+
+  --gold: oklch(0.83 0.166 90);
+  --gold-foreground: oklch(0.19 0.04 90);
+  --emerald: oklch(0.78 0.17 156);
+  --violet: oklch(0.68 0.19 285);
+
+  --secondary: oklch(0.28 0.03 165);
+  --secondary-foreground: oklch(0.975 0.008 120);
+
+  --muted: oklch(0.26 0.026 165);
+  --muted-foreground: oklch(0.79 0.022 150);
+
+  --accent: oklch(0.68 0.19 285);
+  --accent-foreground: oklch(0.98 0.01 285);
+
+  --destructive: oklch(0.63 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+
+  --border: oklch(0.98 0.02 140 / 12%);
+  --input: oklch(0.98 0.02 140 / 16%);
+  --ring: oklch(0.83 0.166 90 / 60%);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.15 100), oklch(0.78 0.17 84));
+  --gradient-value: linear-gradient(120deg, oklch(0.86 0.16 95), oklch(0.79 0.17 150));
+  --gradient-band: linear-gradient(
+    135deg,
+    oklch(0.24 0.06 160) 0%,
+    oklch(0.2 0.045 200) 45%,
+    oklch(0.26 0.09 288) 100%
+  );
+  --shadow-glow-gold: 0 18px 60px -18px oklch(0.83 0.166 90 / 55%);
+  --shadow-glow-violet: 0 18px 60px -18px oklch(0.68 0.19 285 / 55%);
+  --shadow-card: 0 24px 60px -32px oklch(0 0 0 / 85%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background: oklch(0.83 0.166 90 / 30%);
+  }
+}
+
+@utility text-gradient-gold {
+  background-image: var(--gradient-value);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass-card {
+  background: color-mix(in oklab, var(--surface) 72%, transparent);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-card);
+}
+
+@utility grid-backdrop {
+  background-image:
+    linear-gradient(to right, oklch(0.98 0.02 140 / 5%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.98 0.02 140 / 5%) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  &[data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -26px, 0) scale(1.05);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer-pass {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.83 0.166 90 / 55%);
+  }
+  50% {
+    box-shadow: 0 0 0 12px oklch(0.83 0.166 90 / 0%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes float-arrow {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(12deg);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-float-orb {
+  animation: float-orb 9s ease-in-out infinite;
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+
+@utility animate-shimmer-pass {
+  animation: shimmer-pass 2.6s ease-in-out infinite;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 2.2s ease-out infinite;
+}
+
+@utility animate-pulse-ring {
+  animation: pulse-ring 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@utility animate-float-arrow {
+  animation: float-arrow 1.4s ease-in-out infinite;
+}
+
+@utility animate-sparkle-twinkle {
+  animation: sparkle-twinkle 2s ease-in-out infinite;
+}
+
+@utility animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* ── Custom Cursor (PC only) ─────────────────────────────────────────────── */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: url('/cursor.svg') 16 16, auto !important;
+  }
+  a, button, [role="button"], input[type="submit"], input[type="button"], label, select, textarea, [onclick], .cursor-pointer {
+    cursor: url('/cursor-pointer.svg') 16 16, pointer !important;
+  }
+}
