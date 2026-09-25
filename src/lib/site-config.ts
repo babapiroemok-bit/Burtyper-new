@@ -6,7 +6,7 @@
  */
 
 // Discord sunucu davet linki — tüm CTA butonları burayı kullanır.
-export const DISCORD_INVITE = "https://discord.gg/8egH5kMQYB";
+export const DISCORD_INVITE = "https://discord.gg/xa5tERru4U";
 
 export const BRAND = {
   name: "Burtyper",

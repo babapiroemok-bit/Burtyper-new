@@ -31,7 +31,7 @@ function NotFoundComponent() {
             Ana Sayfaya Dön
           </a>
           <a
-            href="https://discord.gg/8egH5kMQYB"
+            href="https://discord.gg/xa5tERru4U"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3 text-sm font-bold text-muted-foreground transition-colors hover:text-foreground"
